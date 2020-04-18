@@ -12,6 +12,8 @@ func _ready():
 	#self.play("shine")
 	pass
 
+func _process(delta):
+	to_random_pos()
 
 func to_random_pos():
 	#if bird.get_state() == bird.STATE_GROUNDED:
@@ -20,5 +22,6 @@ func to_random_pos():
 	var x = rand_radius * cos(rand_angle) + MEDAL_RADIUS
 	var y = rand_radius * sin(rand_angle) + MEDAL_RADIUS
 	set_position(Vector2(x,y))
+	#to_random_pos()
 	pass
 

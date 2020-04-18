@@ -79,17 +79,19 @@ func _ready():
 
 func _on_score_best_changed():
 	label.set_text(String(game.score_best))
-	
-	if game.score_current <= game.MEDAL_BRONZE:
+	print (game.score_current)
+	if game.score_current > game.MEDAL_BRONZE:
 		texture.set_texture(medal_bronze)
 		emit_signal(\"shown\")
-	elif game.score_current <= game.MEDAL_SILVER:
+		
+	if game.score_current > game.MEDAL_SILVER:
 		texture.set_texture(medal_silver)
 		emit_signal(\"shown\")
-	elif game.score_current <= game.MEDAL_GOLD:
+
+	if game.score_current > game.MEDAL_GOLD:
 		texture.set_texture(medal_gold)
 		emit_signal(\"shown\")
-	elif game.score_current <= game.MEDAL_PLATINUM:
+	if game.score_current > game.MEDAL_PLATINUM:
 		texture.set_texture(medal_platinum)
 		emit_signal(\"shown\")
 
@@ -352,6 +354,9 @@ margin_left = 12.8024
 margin_top = 20.5016
 margin_right = 42.8024
 margin_bottom = 52.5016
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MedalShine" type="AnimatedSprite" parent="GameOverNode/GameOverContainer/ScorePanel/Medal"]
 position = Vector2( 10.3304, 11.4924 )
