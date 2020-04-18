@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://sprites/bird_orange_2.png" type="Texture" id=1]
+[ext_resource path="res://sprites/bird_orange_0.png" type="Texture" id=2]
+[ext_resource path="res://sprites/bird_orange_1.png" type="Texture" id=3]
+[ext_resource path="res://scripts/Bird.gd" type="Script" id=4]
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 6.36219
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "fly",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=3]
+resource_name = "BirdAnim"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteBird:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -5 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteBird:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 1 ]
+}
+
+[node name="Bird" type="RigidBody2D"]
+position = Vector2( 15, 20 )
+gravity_scale = 5.0
+contacts_reported = 1
+contact_monitor = true
+linear_damp = 0.0
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.153088, 0.572369 )
+shape = SubResource( 4 )
+
+[node name="SpriteBird" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "fly"
+
+[node name="BirdAnim" type="AnimationPlayer" parent="."]
+autoplay = "BirdAnim"
+anims/BirdAnim = SubResource( 3 )

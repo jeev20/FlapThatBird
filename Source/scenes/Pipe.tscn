@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://sprites/pipe_green_bottom.png" type="Texture" id=1]
+[ext_resource path="res://sprites/pipe_green_top.png" type="Texture" id=2]
+[ext_resource path="res://scripts/Pipe.gd" type="Script" id=3]
+[ext_resource path="res://scenes/Score.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12.9748, 80.6661 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 14.2771, 82.9011 )
+
+[node name="Pipe" type="StaticBody2D"]
+z_index = -1
+script = ExtResource( 3 )
+
+[node name="SpriteTop" type="Sprite" parent="."]
+position = Vector2( 0, -100 )
+texture = ExtResource( 2 )
+
+[node name="SpriteBottom" type="Sprite" parent="."]
+position = Vector2( 0, 115 )
+texture = ExtResource( 1 )
+
+[node name="BottomShape" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 116.014 )
+shape = SubResource( 1 )
+
+[node name="TopShape" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -102.443 )
+shape = SubResource( 2 )
+
+[node name="NodeRight" type="Position2D" parent="."]
+position = Vector2( 13, 0 )
+
+[node name="Score" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, 7.87599 )
