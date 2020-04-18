@@ -9,6 +9,7 @@ This game is built using the Godot Game Engine.
 Relevant edits and additions been made to make it playable in [Godot Version 3.2](https://godotengine.org/download/windows).
 
 
+The game can be played at: https://jeev20.github.io/FlapThatBird/
 
 
 ### Attributions
