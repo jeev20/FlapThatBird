@@ -121,7 +121,10 @@ class FlappingState:
 	func input(event):
 		if Input.is_action_pressed("ui_select"):
 			flap()
-
+		if not event is InputEventScreenTouch:
+			return
+		if event.pressed:
+			flap()
 
 	func exit():
 		pass
@@ -177,3 +180,6 @@ class GroundState:
 		pass
 	func exit():
 		pass
+
+
+
